@@ -1,5 +1,5 @@
 # colorSmoothie
-This is a script to mix an array of colors in the **LAB** color space.
+This is a script to mix an array of **RGB** colors in the **LAB** color space.
 
 Includes:
 * (color) name to rgb
