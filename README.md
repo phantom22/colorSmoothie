@@ -12,13 +12,13 @@ Includes:
 ```javascript
 
 const s = new colorSmoothie();
-s.LABcolorMixer([ [255,0,0], [255,255,0] ]); // expected value: [255, 163, 0]
 
-s.LABcolorMixer([ [255,0,255], [240,128,128], [255,255,0], [0,128,128] ]); // expected value: [213, 150, 145] 
+s.LABcolorMixer([ [255,0,0], [255,255,0] ]); 
+// expected value: [255, 163, 0]
+
+s.LABcolorMixer([ [255,0,255], [240,128,128], [255,255,0], [0,128,128] ]); 
+// expected value: [213, 150, 145] 
 
 ```
-
+---
 [demo](https://phantom22.github.io/colorSmoothie/)
-
-### Dependecies
-None
