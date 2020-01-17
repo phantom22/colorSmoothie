@@ -3,18 +3,18 @@ This is a script to mix an array of **RGB** colors in the **LAB** color space.
 
 Includes:
 * (color) name to rgb
-* rgb to hex
-* hex to rgb
-* rgb to linear RGB
-* linear RGB to XYZ
-* XYZ to L\*a\*b\* with selected color gamma
-* L\*a\*b\* to rgb
-* rgb to L\*a\*b\*
+* rgb to hex (& viceversa)
+* hex to rgb (& viceversa)
+* rgb to linear RGB (& viceversa)
+* linear RGB to XYZ (& viceversa)
+* XYZ to L\*a\*b\* with selected color gamma (& viceversa)
+* rgb to L\*a\*b\* (& viceversa)
+* color mixer
 
 ## syntax
 ```javascript
 
-const s = new colorSmoothie();
+const s = new colorSmoothie("sRGB");
 
 s.LABcolorMixer([ [255,0,0], [255,255,0] ]); 
 // expected value: [255, 163, 0]
