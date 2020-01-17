@@ -1,8 +1,8 @@
 class colorSmoothie {
 
-  constructor(COLORSPACE) {
+  constructor(gamma) {
 
-  	const gamma = {
+  	const GAMMA = {
 
       "Adobe RGB (1998)":[[0.5767309,0.1855540,0.1881852,0.2973769,0.6273491,0.0752741,0.0270343,0.0706872,0.9911085],[2.0413690,-0.5649464,-0.3446944,-0.9692660,1.8760108,0.0415560,0.0134474,-0.1183897,1.0154096]],
       "AppleRGB":[[0.4497288,0.3162486,0.1844926,0.2446525,0.6720283,0.0833192,0.0251848,0.1411824,0.9224628],[2.9515373,-1.2894116,-0.4738445,-1.0851093,1.9908566,0.0372026,0.0854934,-0.2694964,1.0912975]],
@@ -22,21 +22,33 @@ class colorSmoothie {
       "Wide Gamut RGB":[[0.7161046,0.1009296,0.1471858,0.2581874,0.7249378,0.0168748,0.0000000,0.0517813,0.7734287],[1.4628067,-0.1840623,-0.2743606,-0.5217933,1.4472381,0.0677227,0.0349342,-0.0968930,1.2884099]]
   	}
 
-    if ( typeof gamma[COLORSPACE] !== "undefined" ) {
+  	this.gammas = GAMMA;
 
-      this.gamma = gamma[COLORSPACE];
+    if ( typeof GAMMA[gamma] !== "undefined" ) {
+
+      this.gamma = GAMMA[gamma];
 
     }
 
     else {
 
-      this.gamma = gamma["sRGB"];
+      this.gamma = GAMMA["sRGB"];
 
     }
 
   }
 
-    NAMEtoRGB(name) {
+  setGamma(gamma) {
+
+    if ( typeof gamma === "string" && typeof this.gammas[gamma] !== "undefined" ) {
+
+      this.gamma = this.gammas[gamma];
+
+    }
+
+  }
+
+  NAMEtoRGB(name) {
 
     if ( typeof name === "string" ) {
 
