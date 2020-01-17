@@ -5,6 +5,9 @@ Includes:
 * (color) name to rgb
 * rgb to hex
 * hex to rgb
+* rgb to linear RGB
+* linear RGB to XYZ
+* XYZ to L\*a\*b\* with selected color gamma
 * L\*a\*b\* to rgb
 * rgb to L\*a\*b\*
 
