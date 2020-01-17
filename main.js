@@ -1,7 +1,7 @@
 var color1 = [0, 0, 0];
 var color2 = [0, 0, 0];
 
-const s = new colorSmoothie();
+const s = new colorSmoothie("CIE RGB");
 
 const inputs = document.querySelectorAll("input");
 
