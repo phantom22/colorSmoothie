@@ -14,7 +14,8 @@ Includes:
 ## syntax
 ```javascript
 
-const s = new colorSmoothie("AppleRGB"); // if the argument is omitted the standard value is "sRGB" 
+const s = new colorSmoothie("AppleRGB"); // if the argument is omitted the standard value is "sRGB"
+s.setGamma("sRGB"); // returning to standard gamma
 
 s.LABcolorMixer([ [255,0,0], [255,255,0] ]); 
 // expected value: [255, 163, 0]
