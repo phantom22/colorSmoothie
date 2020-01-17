@@ -22,26 +22,15 @@ class colorSmoothie {
       "Wide Gamut RGB":[[0.7161046,0.1009296,0.1471858,0.2581874,0.7249378,0.0168748,0.0000000,0.0517813,0.7734287],[1.4628067,-0.1840623,-0.2743606,-0.5217933,1.4472381,0.0677227,0.0349342,-0.0968930,1.2884099]]
   	}
 
-    if (typeof COLORSPACE === "string") {
+    if ( typeof gamma[COLORSPACE] !== "undefined" ) {
 
-      if ( typeof color_spaces[COLORSPACE] !== "undefined" ) {
-
-      	this.gamma = color_spaces[COLORSPACE];
-
-
-      }
-
-      else {
-
-      	throw "Invalid color space!"
-
-      }
+      this.gamma = gamma[COLORSPACE];
 
     }
 
     else {
 
-    	throw "Invalid color space!"
+      this.gamma = gamma["sRGB"];
 
     }
 
@@ -132,7 +121,7 @@ class colorSmoothie {
 
   	if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
 
-  	  let r = RGB[0], g = RGB[1], b = RGB[2], x, y, z, M = this.colorMatrix[0];
+  	  let r = RGB[0], g = RGB[1], b = RGB[2], x, y, z, M = this.gamma[0];
 
   	  x = (r * M[0] + g * M[1] + b * M[2]) / 0.95047;
       y = (r * M[3] + g * M[4] + b * M[5]) / 1.00000;
@@ -148,7 +137,7 @@ class colorSmoothie {
 
   	if (typeof XYZ !== "undefined" && Array.isArray(XYZ) === true && XYZ.length === 3) {
 
-  	  let x = XYZ[0], y = XYZ[1], z = XYZ[2], r, g, b, M = this.colorMatrix[1];
+  	  let x = XYZ[0], y = XYZ[1], z = XYZ[2], r, g, b, M = this.gamma[1];
 
   	  r = x *  M[0] + y * M[1] + z * M[2];
       g = x *  M[3] + y * M[4] + z * M[5];
