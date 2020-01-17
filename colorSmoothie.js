@@ -99,81 +99,81 @@ class colorSmoothie {
 
   RGBtoLinearRGB(RGB) {
 
-  	if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
+    if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
 
-  		let r = RGB[0] / 255, g = RGB[1] / 255, b = RGB[2] / 255;
+      let r = RGB[0] / 255, g = RGB[1] / 255, b = RGB[2] / 255;
 
-  	    r = (r > 0.04045) ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+        r = (r > 0.04045) ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
         g = (g > 0.04045) ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
         b = (b > 0.04045) ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
 
         return [r,g,b];
 
-  	}
+    }
 
   }
 
   LinearRGBtoRGB(RGB) {
 
-  	if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
+    if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
 
-  	  let r = RGB[0], g = RGB[1], b = RGB[2];
+      let r = RGB[0], g = RGB[1], b = RGB[2];
 
-  	  r = (r > 0.0031308) ? (1.055 * Math.pow(r, 1 / 2.4) - 0.055) : 12.92 * r;
+      r = (r > 0.0031308) ? (1.055 * Math.pow(r, 1 / 2.4) - 0.055) : 12.92 * r;
       g = (g > 0.0031308) ? (1.055 * Math.pow(g, 1 / 2.4) - 0.055) : 12.92 * g;
       b = (b > 0.0031308) ? (1.055 * Math.pow(b, 1 / 2.4) - 0.055) : 12.92 * b;
 
       return [Math.max(0, Math.min(1, r)) * 255, Math.max(0, Math.min(1, g)) * 255, Math.max(0, Math.min(1, b)) * 255];
 
-  	}
+    }
 
   }
 
   LinearRGBtoXYZ(RGB) {
 
-  	if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
+    if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
 
-  	  let r = RGB[0], g = RGB[1], b = RGB[2], x, y, z, M = this.gamma[0];
+      let r = RGB[0], g = RGB[1], b = RGB[2], x, y, z, M = this.gamma[0];
 
-  	  x = (r * M[0] + g * M[1] + b * M[2]) / 0.95047;
+      x = (r * M[0] + g * M[1] + b * M[2]) / 0.95047;
       y = (r * M[3] + g * M[4] + b * M[5]) / 1.00000;
       z = (r * M[6] + g * M[7] + b * M[8]) / 1.08883;
 
       return [x,y,z];
 
-  	}
+    }
 
   }
 
   XYZtoLinearRGB(XYZ) {
 
-  	if (typeof XYZ !== "undefined" && Array.isArray(XYZ) === true && XYZ.length === 3) {
+    if (typeof XYZ !== "undefined" && Array.isArray(XYZ) === true && XYZ.length === 3) {
 
-  	  let x = XYZ[0], y = XYZ[1], z = XYZ[2], r, g, b, M = this.gamma[1];
+      let x = XYZ[0], y = XYZ[1], z = XYZ[2], r, g, b, M = this.gamma[1];
 
-  	  r = x *  M[0] + y * M[1] + z * M[2];
+      r = x *  M[0] + y * M[1] + z * M[2];
       g = x *  M[3] + y * M[4] + z * M[5];
       b = x *  M[6] + y * M[7] + z * M[8];
 
       return [r,g,b];
 
-  	}
+    }
 
   }
 
   XYZtoCOLORSPACE(XYZ) {
 
-  	if (typeof XYZ !== "undefined" && Array.isArray(XYZ) === true && XYZ.length === 3) {
+    if (typeof XYZ !== "undefined" && Array.isArray(XYZ) === true && XYZ.length === 3) {
 
-  	  let x = XYZ[0], y = XYZ[1], z = XYZ[2], l, a, b;
+      let x = XYZ[0], y = XYZ[1], z = XYZ[2], l, a, b;
 
-  	  l = (x > 0.008856) ? Math.pow(x, 1 / 3) : (7.787 * x) + 16 / 116;
+      l = (x > 0.008856) ? Math.pow(x, 1 / 3) : (7.787 * x) + 16 / 116;
       a = (y > 0.008856) ? Math.pow(y, 1 / 3) : (7.787 * y) + 16 / 116;
       b = (z > 0.008856) ? Math.pow(z, 1 / 3) : (7.787 * z) + 16 / 116;
 
       return [(116*a)-16,500*(l-a),200*(a-b)];
 
-  	}
+    }
 
   }
 
