@@ -14,7 +14,7 @@ Includes:
 ## syntax
 ```javascript
 
-const s = new colorSmoothie("sRGB");
+const s = new colorSmoothie("sRGB"); // "sRGB" 
 
 s.LABcolorMixer([ [255,0,0], [255,255,0] ]); 
 // expected value: [255, 163, 0]
