@@ -185,8 +185,6 @@ class colorSmoothie {
 
       let x = XYZ[0], y = XYZ[1], z = XYZ[2], l, a, b;
 
-      [l,a,b] = [x,y,z].map( v => (v > 0.008856) ? Math.pow(v, 1 / 3) : (7.787 * v) + 16 / 116 );
-
       l = (x > 0.008856) ? Math.pow(x, 1 / 3) : (7.787 * x) + 16 / 116;
       a = (y > 0.008856) ? Math.pow(y, 1 / 3) : (7.787 * y) + 16 / 116;
       b = (z > 0.008856) ? Math.pow(z, 1 / 3) : (7.787 * z) + 16 / 116;
@@ -332,8 +330,6 @@ class colorSmoothie {
   }
 
   // refWhite => Y = 1; X = 0.95041; Z = 1.08747;
-
- // XYZtoLUV
 
   LABcolorMixer(RGBcolorArray) {
       
