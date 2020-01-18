@@ -216,36 +216,36 @@ class colorSmoothie {
 
   LABtoLCH(LAB) {
 
-  	const t = this,
-  	validate = t.validateColor;
+    const t = this,
+    validate = t.validateColor;
 
     if ( validate(LAB) ) {
 
-  	  let l = LAB[0], a = LAB[1], b = LAB[2], c, h;
+      let l = LAB[0], a = LAB[1], b = LAB[2], c, h;
 
-  	  c = Math.sqrt( a * a + b * b );
-  	  h = Math.atan2( b, a ) >= 0 ? Math.atan2( b, a ) * 180 / Math.PI : (Math.atan2( b, a ) + 360) * 180 / Math.PI;
+      c = Math.sqrt( a * a + b * b );
+      h = Math.atan2( b, a ) >= 0 ? Math.atan2( b, a ) * 180 / Math.PI : (Math.atan2( b, a ) + 360) * 180 / Math.PI;
 
-  	  return [l,c,h];
+      return [l,c,h];
 
-  	}
+    }
 
   }
 
   LCHtoLAB(LCH) {
 
-  	const validate = this.validateColor;
+    const validate = this.validateColor;
 
     if ( validate(LCH) ) {
 
-  	  let l = LCH[0], c = LCH[1], h = LCH[2] * Math.PI / 180, a, b;
+      let l = LCH[0], c = LCH[1], h = LCH[2] * Math.PI / 180, a, b;
 
-  	  a = Math.cos( h ) * c;
-  	  b = Math.sin( h ) * c;
+      a = Math.cos( h ) * c;
+      b = Math.sin( h ) * c;
 
-  	  return [l,a,b];
+      return [l,a,b];
 
-  	}
+    }
 
   }
 
@@ -270,8 +270,8 @@ class colorSmoothie {
 
   LABtoRGB(LAB) {
 
-  	const t = this,
-  	validate = t.validateColor;
+    const t = this,
+    validate = t.validateColor;
 
     if ( validate(LAB) ) {
 
@@ -289,8 +289,8 @@ class colorSmoothie {
 
   RGBtoLCH(RGB){
 
-  	const t = this,
-  	validate = t.validateColor;
+    const t = this,
+    validate = t.validateColor;
 
     if ( validate(RGB) ) {
 
@@ -309,8 +309,8 @@ class colorSmoothie {
 
   LCHtoRGB(LCH) {
 
-  	const t = this,
-  	validate = t.validateColor;
+    const t = this,
+    validate = t.validateColor;
 
     if ( validate(LCH) ) {
 
@@ -377,17 +377,17 @@ class colorSmoothie {
 
   validateColor(color) {
 
-  	if (typeof color !== "undefined" && Array.isArray(color) && color.length == 3) {
+    if (typeof color !== "undefined" && Array.isArray(color) && color.length == 3) {
 
-  	  return true;
+      return true;
 
-  	}
+    }
 
-  	else {
+    else {
 
-  	  throw "Invalid color!"
+      throw "Invalid color!"
 
-  	}
+    }
 
   }
 
