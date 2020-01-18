@@ -15,7 +15,7 @@ function updateColors(id) {
 
     window[`color${t[1]}`][index] = Number(value);
 
-    const mixed = s.LABcolorMixer([color1,color2]),
+    const mixed = s.LCHcolorMixer([color1,color2]),
     resultX = "rgb("+window[`color${t[1]}`].join(",")+")",
     resultY = `rgb(${mixed[0]},${mixed[1]},${mixed[2]})`;
 

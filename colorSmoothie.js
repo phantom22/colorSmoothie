@@ -72,9 +72,10 @@ class colorSmoothie {
 
   RGBtoHEX(RGB) {
 
-    const NUMBERtoHEX = (number) => { if ( typeof number === "number" && number >= 0 && number <= 255 ) {const hex = number.toString(16); return hex.length < 2 ? "0" + hex : hex }}
+    const NUMBERtoHEX = (number) => { if ( typeof number === "number" && number >= 0 && number <= 255 ) {const hex = number.toString(16); return hex.length < 2 ? "0" + hex : hex }},
+    validate = this.validateColor;
 
-    if ( typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3 ) {
+    if ( validate(RGB) ) {
 
     return RGB.map( v => NUMBERtoHEX(v) ).join("");
 
@@ -99,7 +100,9 @@ class colorSmoothie {
 
   RGBtoLinearRGB(RGB) {
 
-    if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
+    const validate = this.validateColor;
+
+    if ( validate(RGB) ) {
 
       let r = RGB[0] / 255, g = RGB[1] / 255, b = RGB[2] / 255;
 
@@ -115,7 +118,9 @@ class colorSmoothie {
 
   LinearRGBtoRGB(RGB) {
 
-    if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
+    const validate = this.validateColor;
+
+    if ( validate(RGB) ) {
 
       let r = RGB[0], g = RGB[1], b = RGB[2];
 
@@ -131,7 +136,9 @@ class colorSmoothie {
 
   LinearRGBtoXYZ(RGB) {
 
-    if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
+    const validate = this.validateColor;
+
+    if ( validate(RGB) ) {
 
       let r = RGB[0], g = RGB[1], b = RGB[2], x, y, z, M = this.gamma[0];
 
@@ -147,7 +154,9 @@ class colorSmoothie {
 
   XYZtoLinearRGB(XYZ) {
 
-    if (typeof XYZ !== "undefined" && Array.isArray(XYZ) === true && XYZ.length === 3) {
+    const validate = this.validateColor;
+
+    if ( validate(XYZ) ) {
 
       let x = XYZ[0], y = XYZ[1], z = XYZ[2], r, g, b, M = this.gamma[1];
 
@@ -161,9 +170,11 @@ class colorSmoothie {
 
   }
 
-  XYZtoCOLORSPACE(XYZ) {
+  XYZtoLAB(XYZ) {
 
-    if (typeof XYZ !== "undefined" && Array.isArray(XYZ) === true && XYZ.length === 3) {
+    const validate = this.validateColor;
+
+    if ( validate(XYZ) ) {
 
       let x = XYZ[0], y = XYZ[1], z = XYZ[2], l, a, b;
 
@@ -177,9 +188,11 @@ class colorSmoothie {
 
   }
 
-  COLORSPACEtoXYZ(LAB) {
+  LABtoXYZ(LAB) {
 
-    if (typeof LAB !== "undefined" && Array.isArray(LAB) === true && LAB.length === 3) {
+    const validate = this.validateColor;
+
+    if ( validate(LAB) ) {
 
       let a = (LAB[0] + 16) / 116, l = LAB[1] / 500 + a, b = a - LAB[2] / 200, x, y, z;
 
@@ -193,31 +206,51 @@ class colorSmoothie {
 
   }
 
-  COLORSPACEtoRGB(LAB) {
+  LABtoLCH(LAB) {
 
-    if (typeof LAB !== "undefined" && Array.isArray(LAB) === true && LAB.length === 3) {
+  	const validate = this.validateColor;
 
-      let XYZ, LRGB, RGB;
+    if ( validate(LAB) ) {
 
-      XYZ = this.COLORSPACEtoXYZ(LAB);
-      LRGB = this.XYZtoLinearRGB(XYZ);
-      RGB = this.LinearRGBtoRGB(LRGB);
+  	  let l = LAB[0], a = LAB[1], b = LAB[2], c, h;
 
-      return RGB
+  	  c = Math.sqrt( a * a + b * b );
+  	  h = Math.atan2( b, a ) >= 0 ? Math.atan2( b, a ) * 180 / Math.PI : (Math.atan2( b, a ) + 360) * 180 / Math.PI;
 
-    }
+  	  return [l,c,h];
+
+  	}
 
   }
 
-  RGBtoCOLORSPACE(RGB){
+  LCHtoLAB(LCH) {
 
-    if (typeof RGB !== "undefined" && Array.isArray(RGB) === true && RGB.length === 3) {
+  	const validate = this.validateColor;
+
+    if ( validate(LCH) ) {
+
+  	  let l = LCH[0], c = LCH[1], h = LCH[2] * Math.PI / 180, a, b;
+
+  	  a = Math.cos( h ) * c;
+  	  b = Math.sin( h ) * c;
+
+  	  return [l,a,b];
+
+  	}
+
+  }
+
+  RGBtoLAB(RGB){
+
+    const validate = this.validateColor;
+
+    if ( validate(RGB) ) {
 
       let LRGB, XYZ, LAB;
 
       LRGB = this.RGBtoLinearRGB(RGB);
       XYZ = this.LinearRGBtoXYZ(LRGB);
-      LAB = this.XYZtoCOLORSPACE(XYZ);
+      LAB = this.XYZtoLAB(XYZ);
 
       return LAB;
 
@@ -225,15 +258,71 @@ class colorSmoothie {
 
   }
 
+  LABtoRGB(LAB) {
+
+  	const validate = this.validateColor;
+
+    if ( validate(LAB) ) {
+
+      let XYZ, LRGB, RGB;
+
+      XYZ = this.LABtoXYZ(LAB);
+      LRGB = this.XYZtoLinearRGB(XYZ);
+      RGB = this.LinearRGBtoRGB(LRGB);
+
+      return RGB.map( v => Math.round(v) );
+
+    }
+
+  }
+
+  RGBtoLCH(RGB){
+
+  	const validate = this.validateColor;
+
+    if ( validate(RGB) ) {
+
+      let LRGB, XYZ, LAB, LCH;
+
+      LRGB = this.RGBtoLinearRGB(RGB);
+      XYZ = this.LinearRGBtoXYZ(LRGB);
+      LAB = this.XYZtoLAB(XYZ);
+      LCH = this.LABtoLCH(LAB);
+
+      return LCH;
+
+    }
+
+  }
+
+  LCHtoRGB(LCH) {
+
+  	const validate = this.validateColor;
+
+    if ( validate(LCH) ) {
+
+      let LAB, XYZ, LRGB, RGB;
+
+      LAB = this.LCHtoLAB(LCH);
+      XYZ = this.LABtoXYZ(LAB);
+      LRGB = this.XYZtoLinearRGB(XYZ);
+      RGB = this.LinearRGBtoRGB(LRGB);
+
+      return RGB.map( v => Math.round(v) );
+
+    }
+
+  }
+
   LABcolorMixer(RGBcolorArray) {
       
-    const validate = ( arr ) => typeof arr !== "undefined" && Array.isArray(arr) && arr.length == 3;
+    const validate = this.validateColor;
   
-    RGBcolorArray.forEach( v => { if (!validate(v)) {throw `Invalid properties!`} });
+    RGBcolorArray.forEach( v => validate(v) );
 
     if ( typeof RGBcolorArray !== "undefined" ) {
 
-      const LABcolorArray = RGBcolorArray.map( v => this.RGBtoCOLORSPACE(v) );
+      const LABcolorArray = RGBcolorArray.map( v => this.RGBtoLAB(v) );
   
       let L = 0, A = 0, B = 0;
 
@@ -242,9 +331,48 @@ class colorSmoothie {
       const colors = LABcolorArray.length;
       L = Math.ceil( L / colors ), A = Math.ceil( A / colors ), B = Math.ceil( B / colors );
   
-      return this.COLORSPACEtoRGB([L,A,B]).map( v => Math.round(v) );
+      return this.LABtoRGB([L,A,B])
 
     }
+
+  }
+
+  LCHcolorMixer(RGBcolorArray) {
+      
+    const validate = this.validateColor;
+  
+    RGBcolorArray.forEach( v => validate(v) );
+
+    if ( typeof RGBcolorArray !== "undefined" ) {
+
+      const LABcolorArray = RGBcolorArray.map( v => this.RGBtoLCH(v) );
+  
+      let L = 0, C = 0, H = 0;
+
+      LABcolorArray.forEach( LAB => {L += LAB[0]; C += LAB[1]; H += LAB[2] });
+
+      const colors = LABcolorArray.length;
+      L = Math.ceil( L / colors ), C = Math.ceil( C / colors ), H = Math.ceil( H / colors );
+  
+      return this.LCHtoRGB([L,C,H])
+
+    }
+
+  }
+
+  validateColor(color) {
+
+  	if (typeof color !== "undefined" && Array.isArray(color) && color.length == 3) {
+
+  	  return true;
+
+  	}
+
+  	else {
+
+  	  throw "Invalid color!"
+
+  	}
 
   }
 
