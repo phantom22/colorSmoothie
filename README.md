@@ -14,6 +14,11 @@ Includes:
 * L\*a\*b\* color mixer
 * L\*c\*h° color mixer
 
+## Color mixing
+
+The color mixing can occur in any color space but my js project focuses on the additive mixing in the L\*a\*b\* and the L\*c\*h° color spaces by summing each of the 3 properties and making an arithmetic average of them.
+*The LCH mixing even if it's working properly can give "unusual" results (like a color that wouldn't occur as a result with the LAB mixing)*
+
 ## syntax
 ```javascript
 
