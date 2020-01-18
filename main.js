@@ -1,5 +1,6 @@
-var color1 = [0, 0, 0];
-var color2 = [0, 0, 0];
+var color1 = [0, 0, 0],
+color2 = [0, 0, 0],
+mixer = "LCH";
 
 const s = new colorSmoothie();
 
@@ -15,7 +16,7 @@ function updateColors(id) {
 
     window[`color${t[1]}`][index] = Number(value);
 
-    const mixed = s.LCHcolorMixer([color1,color2]),
+    const mixed = mixer === "LAB" ? s.LABcolorMixer([color1,color2]) : s.LCHcolorMixer([color1,color2]),
     resultX = "rgb("+window[`color${t[1]}`].join(",")+")",
     resultY = `rgb(${mixed[0]},${mixed[1]},${mixed[2]})`;
 
