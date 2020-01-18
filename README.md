@@ -8,8 +8,11 @@ Includes:
 * rgb to linear RGB (& viceversa)
 * linear RGB to XYZ (& viceversa)
 * XYZ to L\*a\*b\* with selected color gamma (& viceversa)
+* L\*a\*b\* to L\*c\*h°(ab) (& viceversa)
 * rgb to L\*a\*b\* (& viceversa)
-* color mixer
+* rgb to L\*c\*h° (& viceversa)
+* L\*a\*b\* color mixer
+* L\*c\*h° color mixer
 
 ## syntax
 ```javascript
