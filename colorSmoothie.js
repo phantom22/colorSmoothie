@@ -364,13 +364,13 @@ class colorSmoothie {
 
     if ( typeof RGBcolorArray !== "undefined" ) {
 
-      const LABcolorArray = RGBcolorArray.map( v => t.RGBtoLCH(v) );
+      const LCHcolorArray = RGBcolorArray.map( v => t.RGBtoLCH(v) );
   
       let L = 0, C = 0, H = 0;
 
-      LABcolorArray.forEach( LAB => {L += LAB[0]; C += LAB[1]; H += LAB[2] });
+      LCHcolorArray.forEach( LCH => {L += LCH[0]; C += LCH[1]; H += LCH[2] });
 
-      const colors = LABcolorArray.length;
+      const colors = LCHcolorArray.length;
       L = Math.ceil( L / colors ), C = Math.ceil( C / colors ), H = Math.ceil( H / colors );
   
       return t.LCHtoRGB([L,C,H])
