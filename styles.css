@@ -11,46 +11,45 @@
 
 .color {
 	position: absolute;
-	top: 20%;
+	top: 10%;
 	background: white;
-	width: 16.0427807486631%;
-	height: 55.30973451327434%;
-	border-radius: 15px;
+	width: 30%;
+	height: 80%;
 	/*min-width: 267.417px;
 	min-height: 527.1px;*/
 	overflow: hidden;
 }
 
 .color1 {
-	left: 25%;
+	left: 4.5%;
+	border-radius: 15px 15px 15px 15%;
 }
 
 .color2 {
-	right: 25%;
+	right: 4.5%;
+	border-radius: 15px 15px 15% 15px;
 }
 
 .color3 {
-	margin: 10px auto;
-	width: 50px;
-	height: 50px;
-	border-radius: 25%;
+	margin: 10px auto 0 auto;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
 	background: white;
-	/*left: 40%;
-	top: 45.26355%;*/
 	transition: all 1s;
-	border: 3px solid black;
+	border: 3px dotted black;
 }
 
 .color-square {
-	margin: 10px auto;
+	margin: 10px auto 0 auto;
 	/*left: 40%;
 	top: 5%;*/
 	background: black;
-	width: 50px;
-	height: 50px;
-	border-radius: 45%;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
 	transition: all 1s;
-	border: 3px solid black;
+	border: 3px dotted black;
 }
 
 .range {
@@ -61,15 +60,15 @@
 }
 
 .r {
-	top: 20%;
+	top: 15%;
 }
 
 .g {
-	top: 30%;
+	top: 22.5%;
 }
 
 .b {
-	top: 40%;
+	top: 30%;
 }
 
 .state {
@@ -77,6 +76,9 @@
 	top: 45%;
 	text-align: center;
 	font-weight: bold;
+	background: rgb(40,40,40);
+	color: white;
+	padding: 30px;
 }
 
 .state3 {
@@ -87,8 +89,10 @@
 }
 
 .color-central {
-	left: 42%;
-	height: 20%;
+	left: 35%;
+	top: 25%;
+	height: 50%;
+	border-radius: 15% 15% 15px 15px;
 }
 
 p {
