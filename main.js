@@ -1,6 +1,6 @@
 var color1 = [0, 0, 0],
 color2 = [0, 0, 0],
-mixer = "LCH";
+mixer = "LAB";
 
 const s = new colorSmoothie();
 
