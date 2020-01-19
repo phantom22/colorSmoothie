@@ -43,3 +43,12 @@ inputs.forEach( input => {
   input.addEventListener( "change", function(evt) { updateColors(evt.target.id) })
 
 });
+
+document.querySelectorAll(".btn").forEach( v => { v.addEventListener("click",function(evt){
+
+	document.querySelectorAll(".selected").forEach(v => v.classList.remove("selected"));
+	evt.target.classList.add("selected");
+
+	mixer = evt.target.id;
+
+})})
