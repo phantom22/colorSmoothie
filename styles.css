@@ -21,14 +21,14 @@
 .color1 {
 	left: 0.5%;
 	border-radius: 15px 15px 15px 5%;
-	min-height: 400px;
+	min-height: 300px;
 	box-shadow: 0px 3px 6px 4px rgba(166,166,166,1);
 }
 
 .color2 {
 	right: 0.5%;
 	border-radius: 15px 15px 5% 15px;
-	min-height: 400px;
+	min-height: 300px;
 	box-shadow: 0px 3px 6px 4px rgba(166,166,166,1);
 }
 
@@ -73,12 +73,12 @@
 
 .state {
 	position: relative;
-	top: 43%;
+	top: 31%;
 	text-align: center;
 	font-weight: bold;
 	background: rgb(230,230,230);
 	color: rgb(130,130,130);
-	padding: 20px;
+	padding: 10px;
 	font-size: 10px;
 }
 
@@ -92,10 +92,10 @@
 
 .color-central {
 	left: 33%;
-	top: 21%;
+	top: 16%;
 	height: 50%;
 	border-radius: 5%;
-	min-height: 303px;
+	min-height: 250px;
 	width: 34%;
 	box-shadow: 0px 3px 6px 4px rgba(166,166,166,1);
 	background: rgb(230,230,230);
@@ -104,14 +104,14 @@
 p {
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	font-size: 18px;
+	font-size: 10px;
 }
 
 .mixers {
 	position: relative;
 	top: 35%;
-	height: 50px;
-	overflow: hidden;;
+	height: 40px;
+	overflow: hidden;
 	padding: 0;
 	margin: 0;
 }
