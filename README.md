@@ -23,7 +23,7 @@ The color mixing can occur in any color space but my js project focuses on the a
 
 ## constructor:
 
-**syntax:** *new smoothBlender(gamma)*
+**syntax:** ```new smoothBlender(gamma)```
 
 * **arguments description:** 
 
@@ -39,7 +39,7 @@ s.getAvaiableGammas(); // returns Object with all the supported gammas
 
 ## blending colors
 
-**function name:** blend
+**function name:** ```blend```
 
 **arguments:** *( colorSpace, RGBColorArray, toCSS )*
 
