@@ -2,35 +2,34 @@ var color1 = [0, 0, 0],
 color2 = [0, 0, 0],
 mixer = "LAB";
 
-const s = new colorSmoothie();
+const s = new smoothBlender();
 
-const inputs = document.querySelectorAll("input");
+function updateColors() {
 
-function updateColors(id) {
+  for (let i = 0; i < 2; i++) {
 
-  if (typeof id === "string") {
+  	const r = document.getElementById(`r${i+1}`).value,
+  	g = document.getElementById(`g${i+1}`).value,
+  	b = document.getElementById(`b${i+1}`).value;
 
-    const t = id.split(""),
-    index = ["r","g","b"].indexOf(t[0]),
-    value = document.getElementById(id).value;
+  	window[`color${i+1}`] = [r,g,b].map(Number);
 
-    window[`color${t[1]}`][index] = Number(value);
+  	const color = window[`color${i+1}`],
+  	css = s.RGBArraytoCSS(color);
 
-    const mixed = mixer === "LAB" ? s.LABcolorMixer([color1,color2]) : s.LCHcolorMixer([color1,color2]),
-    resultX = "rgb("+window[`color${t[1]}`].join(",")+")",
-    resultY = `rgb(${mixed[0]},${mixed[1]},${mixed[2]})`;
-
-    document.querySelector(`#cs${t[1]}`).style.background = resultX;
-    document.querySelector(`#s${t[1]}`).textContent = resultX;
-
-    document.querySelector(".color3").style.background = resultY;
-    document.querySelector("#s3").textContent = resultY;
+  	document.getElementById(`cs${i+1}`).style.background = css;
+  	document.getElementById(`s${i+1}`).textContent = css;
 
   }
 
+  const blendedCSS = typeof mixer == "string" ? s.blend(mixer,[color1,color2],true) : "Invalid mixer";
+  document.querySelector(".color3").style.background = blendedCSS;
+  document.getElementById("s3").textContent = blendedCSS;
+
+
 }
 
-inputs.forEach( input => {
+document.querySelectorAll("input").forEach( input => {
 
   const s = input.id.split(""),
   val = Math.floor(Math.random() * 255),
@@ -38,9 +37,7 @@ inputs.forEach( input => {
   input.value = val;
   window[`color${s[1]}`][index] = val;
 
-  updateColors(input.id);
-
-  input.addEventListener( "change", function(evt) { updateColors(evt.target.id) })
+  input.addEventListener( "change", function(evt) { updateColors() })
 
 });
 
@@ -52,3 +49,5 @@ document.querySelectorAll(".btn").forEach( v => { v.addEventListener("click",fun
 	mixer = evt.target.id;
 
 })})
+
+updateColors();
