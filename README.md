@@ -10,17 +10,14 @@ Also it has useful functions to convert CSS values into arrays and viceversa.
 ```
 (color) name to rgb
 Array (made of 3 numbers) to rgb (CSS)
-rgb (CSS) to Array (made of 3 numbers)
 rgb to hex (& viceversa)
-hex to rgb (& viceversa)
 rgb to linear RGB (& viceversa)
 linear RGB to XYZ (& viceversa)
 XYZ to L*a*b* with selected color gamma (& viceversa)
 L*a*b* to L*c*h°(ab) (& viceversa)
 rgb to L*a*b* (& viceversa)
 rgb to L*c*h°(ab) (& viceversa)
-L*a*b* color mixer
-L*c*h°(ab) color mixer
+color blender
 ```
 
 ## Color mixing
