@@ -20,12 +20,7 @@ rgb to L*c*h°(ab) (& viceversa)
 color blender
 ```
 
-## Color mixing
-
-The color mixing can occur in any color space but my js project focuses on the additive mixing in the L\*a\*b\* and the L\*c\*h° color spaces by summing each of the 3 properties and making an arithmetic average of them.
-*The LCH mixing even if it's working properly can give "unusual" results (like a color that wouldn't occur as a result with the LAB mixing)*
-
-## constructor:
+## Constructor
 
 **syntax:** ```new smoothBlender(gamma)```
 
@@ -41,7 +36,10 @@ s.getAvaiableGammas(); // returns Object with all the supported gammas
 
 ```
 
-## blending colors
+## Blending colors
+
+The color mixing can occur in any color space but my js project focuses on the additive mixing in the L\*a\*b\* and the L\*c\*h° color spaces by summing each of the 3 properties and making an arithmetic average of them.
+*The LCH mixing even if it's working properly can give "unusual" results (like a color that wouldn't occur as a result with the LAB mixing)*
 
 **function name:** ```blend```
 
