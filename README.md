@@ -91,4 +91,4 @@ s.RGBtoHEX([240,128,128],true);
 Basically the **toCSS** argument is featured in every function that returns a supported color space like RGB or HEX and will convert the Array result into a CSS value.
 
 ---
-[demo](https://phantom22.github.io/colorSmoothie/)
+[demo](https://phantom22.github.io/smoothBlender/)
