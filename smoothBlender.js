@@ -65,6 +65,16 @@ class smoothBlender {
 
   }
 
+  RGBCSStoArray(RGB) {
+
+    if (typeof RGB == "string") {
+
+      return RGB.slice(4,-1).replace(/\s/g,"").split(",").map(v=>Number(v));
+
+    }
+
+  }
+
   NAMEtoRGB(name,toCSS) {
 
     if ( typeof name === "string" ) {
