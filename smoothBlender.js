@@ -115,6 +115,8 @@ class smoothBlender {
 
   HEXtoRGB(HEX,toCSS) {
 
+    const t = this;
+    
     if ( typeof HEX === "string" && !isNaN(parseInt(HEX, 16)) ) {
 
       let arrBuff = new ArrayBuffer(4),
